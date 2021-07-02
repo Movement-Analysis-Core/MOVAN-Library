@@ -1,5 +1,7 @@
 function datout=loadCortexANC(file)
 
+%Simply adding a comment to test my ability as a public user to interact with MOVAN codes
+
 datout=struct;
 
 fid=fopen(file,'r');
