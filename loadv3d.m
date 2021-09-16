@@ -1,4 +1,4 @@
-function [dataout]=loadv3d20200825(file)
+function [dataout]=loadv3d(file)
 % [dataout]=loadv3d20200825(file)
 % inputs  - file, file path and name of a V3D text file
 % outputs - dataout, structure containing file from V3D text file
@@ -51,6 +51,8 @@ function [dataout]=loadv3d20200825(file)
 % NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
 % SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 %% Begin Code
+
+dbstop if error
 
 fid = fopen(file); % opens file
 
@@ -124,7 +126,7 @@ for j=1:length(sources)
     end
     
     fieldname=[sources{j}(1:end-4) '_' type{j} '_' measure{j} '_' dimension{j}];
-    sources=strrep(sources,' ','_');
+    sources{j}=regexprep(sources{j},{' ','-'},'_');
     type=strrep(type,' ','_');
     measure=strrep(measure,' ','_');
     dimension=strrep(dimension,' ','_');
